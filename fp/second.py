@@ -7,7 +7,7 @@ def concate(x, y):
 helloToName = concate("Hello, ")
 print(helloToName("World!"))
 
-# Тривиальный вариант с порядком в кортеже
+# Тривиальный вариант с порядком
 @curry(4)
 def concate(hello_word, comma, end, name): 
     return hello_word + comma + " " + name + end
