@@ -16,9 +16,25 @@ final = concate("Hello")(",")("!")
 print(final("Petya"))
 
 class Comma:
-    # Конструктор
+    
     def __init__(self, value: str):
-        self.value = value   # Атрибут экземпляра
+        self.value = value   
+
+    def __str__(self):
+        return f"{self.value}"
+        
+class Name:
+    
+    def __init__(self, value: str):
+        self.value = value   
+
+    def __str__(self):
+        return f"{self.value}"  
+        
+class EndSymbol:
+    
+    def __init__(self, value: str):
+        self.value = value   
 
     def __str__(self):
         return f"{self.value}"
@@ -27,4 +43,11 @@ class Comma:
 # но он не сработает 
 @curry(4)
 def concateTyped(hello_word: str, comma: Comma, name: Name, end: EndSymbol): 
-    return f"{hello_word}{comma}" "{name}{end}"
+    return f"{hello_word}{comma} {name}{end}"
+
+endSymbol = EndSymbol("!")    
+comma = Comma(",")    
+name = Name("Petya")
+concateEnd = concateTyped(endSymbol)
+print(concateEnd("Hello",comma, name))
+# !Hello ,Petya
